@@ -1,19 +1,17 @@
 package com.github.anrigu.random.gen;
 
 public class RandomNumGenRequest {
-  private int num;
+  private int numNums;
   private int numLists;
   private boolean repeatNums;
 
   public RandomNumGenRequest() {
-    num = 10;
-    numLists = 1;
+    numNums = 10;
     repeatNums = false;
   }
 
-  public RandomNumGenRequest(int num, int numLists, boolean repeatNums) {
-    num = this.num;
-    numLists = this.num;
+  public RandomNumGenRequest(int numNums, boolean repeatNums) {
+    numNums = this.numNums;
     repeatNums = this.repeatNums;
   }
 
@@ -25,23 +23,15 @@ public class RandomNumGenRequest {
     this.repeatNums = repeatNums;
   }
 
-  public int getNumLists() {
-    return numLists;
+  public int getNumNums() {
+    return numNums;
   }
 
-  public void setNumLists(int numLists) {
-    this.numLists = numLists;
-  }
-
-  public int getNum() {
-    return num;
-  }
-
-  public void setNum(int num) {
-    this.num = num;
+  public void setNumNums(int numNums) {
+    this.numNums = numNums;
   }
 
   public String toString() {
-    return String.format("%s, %s, %s",num, numLists, repeatNums);
+    return String.format("%s, %s, %s",numNums, repeatNums);
   }
 }

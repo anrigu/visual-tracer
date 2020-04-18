@@ -37,7 +37,7 @@ public class WebApplication {
     });
     Spark.before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
-    Spark.get("/random", new RandomNumGenRoute());
-    Spark.post("/json-random", "application/json", new PostJsonRandomRoute(), new JsonTransformer());
+    Spark.post("/random", "application/json", new PostJsonRandomRoute(), new JsonTransformer());
+    Spark.post("/bubble-sort", "application/json", new PostJsonBubbleRoute(), new JsonTransformer());
   }
 }
