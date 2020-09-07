@@ -1,8 +1,14 @@
 package com.github.anrigu.random.gen;
 
+import spark.ModelAndView;
 import spark.Spark;
+import spark.template.velocity.VelocityTemplateEngine;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static spark.Spark.options;
+import static spark.Spark.staticFiles;
 
 /**
  * Entrance of the web application that defines the handler of each API request
@@ -29,6 +35,9 @@ public class WebApplication {
 
     // Listen to the port
     Spark.port(port);
+
+    staticFiles.location("/public");
+
     options("/*", (request, response) -> {
 
       String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
@@ -43,6 +52,7 @@ public class WebApplication {
 
       return "OK";
     });
+
     Spark.before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
     Spark.post("/random", "application/json", new PostJsonRandomRoute(), new JsonTransformer());
@@ -52,6 +62,11 @@ public class WebApplication {
     Spark.post("/binary-search", "application/json", new PostJsonSearchRoute(), new JsonTransformer());
     Spark.post("/linear-search", "application/json", new PostJsonSearchRoute(), new JsonTransformer());
     Spark.post("/custom-code", "application/json", new CustomCodePostRoute(),new JsonTransformer());
-
+    Spark.get("*", (req,res) -> {
+      Map<String, Object> model = new HashMap<>(0);
+      return new VelocityTemplateEngine().render(
+        new ModelAndView(model, "/public/index.html")
+      );
+    });
   }
 }
