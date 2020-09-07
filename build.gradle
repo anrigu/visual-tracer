@@ -1,17 +1,29 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 sourceCompatibility = 1.8
 
 mainClassName = 'com.github.anrigu.random.gen.WebApplication'
 
+jar {
+    archiveBaseName = 'visual-tracer'
+}
+
+shadowJar {
+    archiveBaseName = 'visual-tracer'
+}
+
 dependencies {
     implementation 'com.sparkjava:spark-core:2.9.1'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'org.slf4j:slf4j-simple:1.7.30'
 }
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
 
 repositories {
     mavenCentral()
