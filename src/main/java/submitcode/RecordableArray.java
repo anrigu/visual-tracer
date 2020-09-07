@@ -48,6 +48,11 @@ public class RecordableArray extends SimpleArray {
     return super.compare(index1, index2);
   }
 
+  public int compareWithValue(int index, int value) {
+    addAction(HoldAction.ACTION_COMPARE_VALUE,index,value);
+    return super.compareWithValue(index,value);
+  }
+
   /**
    * Records and completes a swap action at the 2 indexes.
    *

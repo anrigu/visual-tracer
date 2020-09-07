@@ -17,11 +17,10 @@ public class BubbleSort implements Sort{
    *
    */
   public void sort(SimpleArray modArray) {
-
     for (int i = 0; i < modArray.getSize(); i++) {
-      for (int j = i+1; j < modArray.getSize(); j++) {
-        if (modArray.compare(i, j) == 1) {
-          modArray.swapValues(i,j);
+      for (int j = 0; j < modArray.getSize() - i - 1; j++) {
+        if (modArray.compare(j, j+1) == 1) {
+          modArray.swapValues(j,j+1);
         }
       }
     }

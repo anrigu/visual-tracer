@@ -49,5 +49,6 @@ public class HoldAction {
   }
 
   public static String ACTION_COMPARE_INDEX= "Compare";
+  public static String ACTION_COMPARE_VALUE = "CompareValue";
   public static String ACTION_SWAP_INDEX= "Swap";
 }

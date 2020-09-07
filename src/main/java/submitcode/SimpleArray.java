@@ -33,6 +33,30 @@ public class SimpleArray {
   }
 
   /**
+   * Gets a value from the int array
+   *
+   * @param index - The index of the value
+   *
+   * @return The value at the index
+   */
+  public int getValue(int index) {
+    return intArray[index];
+  }
+
+  /**
+   * Gets the int array
+   *
+   * @return The int array
+   */
+  public int[] getIntArray() {
+    return intArray;
+  }
+
+  public void setIntArray(int[] intArray) {
+    this.intArray = intArray;
+  }
+
+  /**
    * Gets the size of the integer array
    *
    * @return The size of the array
@@ -71,18 +95,18 @@ public class SimpleArray {
    * @param index - The index of the number in the array
    * @param value - The external integer value
    *
-   * @return a number signifying which number was greater. 1 if the number at index1 is greater than the number at index2,
-   * 0 if the numbers are the same, and -1 if the number at index2 is greater.
+   * @return a number signifying which number was greater. 1 if the val is greater than the number at index,
+   * 0 if the numbers are the same, and -1 if the number at index is greater.
    * @throws IndexOutOfBoundsException - if the index given is not in the bounds of the array.
    */
   public int compareWithValue(int index, int value) {
     try {
-      if (intArray[index] > value) {
-        return 1; //1 = num at index > value
+      if (intArray[index] < value) {
+        return 1; //1 = value > num at index
       } else if (intArray[index] == value) {
         return 0; //0 = num at index = value
       } else {
-        return -1; //-1 = value > num at index;
+        return -1; //-1 = value < num at index;
       }
     } catch (IndexOutOfBoundsException e) {
       throw new IndexOutOfBoundsException("Index given is not in range of the array.");
